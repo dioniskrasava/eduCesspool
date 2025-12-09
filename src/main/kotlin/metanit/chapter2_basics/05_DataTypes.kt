@@ -1,5 +1,7 @@
 package edu.cesspool.metanit.chapter2_basics
 
+import kotlin.system.exitProcess
+
 /*
 *
 
@@ -81,19 +83,86 @@ fun main(){
     println("1011 = $num3")
 
 
-    /*- - - - - - - -    Ч И С Л А   С   П Л А В А Ю Щ Е Й    Т О Ч К О Й    - - - - - - - -  */
 
-    // FLOAT
-    val pi: Float = 3.14F
-
-    // DOUBLE
-
+    //---------------------------------
+    float()
+    double()
+    boolean()
+    char()
 
 }
 
 
 
 
+/*- - - - - - - -    Ч И С Л А   С   П Л А В А Ю Щ Е Й    Т О Ч К О Й    - - - - - - - -  */
+fun float(){
+
+    // FLOAT
+
+    // СТАВИМ СУФФИК F ИЛИ f !!!
+    //
+    // О Б Я З А Т Е Л Ь Н О  !
+
+    val pi: Float = 3.14F
+
+    /*
+    * Данный тип данных НЕТОЧЕН! Он тратит часть бит на мантису и чать на порядок.
+    *
+    * например: 1.2345 * 10^38
+    *
+    * вроде бы как число большое но теряется точность. Из-за этого например вот этот код:
+    *
+    * */
+
+    val hugeFloat: Float = 2.0E9f       // 2 000 000 000 (2 миллиарда)
+    val nextFloat: Float = 2.0000001E9f // 2 000 000 100
+
+    println("=======FLOAT==========")
+    println("2.0E9f = $hugeFloat")
+    println("2.0000001E9f = $nextFloat") // 2.00000013E9 !!! ЧИСЛО ИЗМЕНИЛОСЬ
+}
 
 
+
+/*- - - - - - - -    D O U B L E     - - - - - - - -  */
+fun double(){
+    // DOUBLE
+    val heigh: Double = 1.81
+    val heigh2: Double = 1.80
+
+
+    val d01: Double = 23e3
+    val d02: Double = 23e-3
+
+    println("=======DOUBLE==========")
+    println("23e3 = ${d01}1") // 23000.01
+    println("23e2 = $d02")    // 0.023
+}
+
+
+/*- - - - - - - -    Л О Г И Ч Е С К И Й     Т И П     - - - - - - - -  */
+fun boolean(){
+    val a: Boolean = true
+    val b: Boolean = false
+
+    println("=======BOOLEAN======")
+    println("a = $a")
+    println("b = $b")
+    println()
+}
+
+
+/*- - - - - - - -    С И М В О Л Ы     - - - - - - - -  */
+fun char(){
+    val a: Char = 'A'
+    val b: Char = 'B'
+
+    val tab: Char = '\t'   // табуляция
+    val enter: Char = '\n' // new line
+
+    println("=========CHAR==========")
+    println("Hello! It is example for $enter using char! $a $b $tab next next next")
+
+}
 
