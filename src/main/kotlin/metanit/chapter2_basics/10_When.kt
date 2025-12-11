@@ -5,6 +5,8 @@ fun main(){
     wrap("WHEN IS BOOLEAN"){whenIsBoolean()}
     wrap("WHEN IS INTEGER"){whenIsInt()}
     wrap("WHEN IS BLOCK CODES"){whenIsBlockCodes()}
+
+    wrap("FEW VALUESA AND RANGE") {whenIsFewValuesAndRange()}
 }
 
 // WHEN не должен покрывать все варианты
@@ -56,4 +58,32 @@ fun whenIsBlockCodes(){
 }
 
 
-// Сравнение с набором значений
+// МОЖНО в WHEN перечислять несколько значений через запятую
+// а МОЖНО описывать диапазон значений
+
+fun whenIsFewValuesAndRange(){
+    val a = 55
+
+    when (a){
+        10, 20 -> println("а = 10 или 20!")
+        30, 40 -> println("a = 30 или 40")
+        in 50..60 -> println("а В диапазоне [50;60]")
+        !in 10..40 -> println("а НЕ в диапазоне [10;40]")
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
