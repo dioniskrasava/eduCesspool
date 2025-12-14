@@ -85,11 +85,19 @@ fun loopBreak(){
 
 // break-label
 // необходим в случае когда нужно выйти к примеру из нескольких циклов по оператору break
+/**
+ * тут имеется метка  outerloop@
+ * которая позволяет оператору break понять,
+ * что необходимо выйти выйди из обоих циклов
+ *
+ * (название метки произвольное)
+ * */
 fun loopBreakWithLabel(){
 
-    for (i in 1..6){
-        for (j in 1..4){
-            print("$i$j")
+    outerloop@ for (i in 1..9){
+        for (j in 1..10){
+            if (i == 5 && j == 5) break@outerloop
+            print("$i-$j  ")
         }
         println()
     }
