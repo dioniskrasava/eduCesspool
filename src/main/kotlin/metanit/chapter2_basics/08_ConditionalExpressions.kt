@@ -35,3 +35,7 @@ fun exampleIn(){
     println("A is 2 znachnoe - $aIs2znach")
     println("A is Not Number - $aIsNotNumber")
 }
+
+//  if ((i == 5) or (i == 7))       эквивалентно       if (i == 5 || i == 7)
+//
+//              вот и живи теперь как хочешь с этой информацией!!!!
