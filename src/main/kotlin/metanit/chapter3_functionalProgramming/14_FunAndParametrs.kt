@@ -14,7 +14,12 @@ package edu.cesspool.metanit.chapter3_functionalProgramming
  * */
 
 /**
+ * в принципе есть какие-то ньюансы по передаче параметров.
+ * думаю, что в дальнейшей разработке если это будет важно, то
+ * я разберусь с этим.
  *
+ * ну то есть речь идет о вызовах функций, в которых имеются
+ * параметры по умолчанию и о передаче аргументов по порядку...
  * */
 
 
@@ -30,7 +35,7 @@ fun main(){
     displayEmployee(name = "Sana", age = 88, position = "consultant")
 }
 
-
+// ПО УМОЛЧАНИЮ АТРИБУТЫ - val   !!!
 fun showMessage(mess: String){
     println(mess)
 }
