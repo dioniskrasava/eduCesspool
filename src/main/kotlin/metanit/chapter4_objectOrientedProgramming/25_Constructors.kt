@@ -11,7 +11,7 @@ fun main(){
     wrap("Init"){initConstr()}
 }
 
-
+// тут в классе Person представлены множество вторичных конструкторов
 fun exampleConstructor1(){
     class Person{
         var name = "Noname"
