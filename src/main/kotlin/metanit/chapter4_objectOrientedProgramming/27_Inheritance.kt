@@ -2,6 +2,7 @@ package edu.cesspool.metanit.chapter4_objectOrientedProgramming.ex1
 
 import edu.cesspool.metanit.chapter2_basics.wrap
 
+//НАСЛЕДОВАНИЕ
 
 fun ex1(){
     open class Person{

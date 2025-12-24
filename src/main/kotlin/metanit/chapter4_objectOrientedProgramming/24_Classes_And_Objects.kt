@@ -5,7 +5,7 @@ import edu.cesspool.metanit.chapter2_basics.wrap
 
 
 
-fun ex1() {
+private fun ex1() {
     class Person {
         // это СВОЙСТВА класса
         // они должны быть проинициализированы
@@ -45,7 +45,7 @@ fun ex1() {
 }
 
 
-fun ex2(){
+private fun ex2(){
     class Person{
         var name: String = "Noname"
         var age: Int = 0
