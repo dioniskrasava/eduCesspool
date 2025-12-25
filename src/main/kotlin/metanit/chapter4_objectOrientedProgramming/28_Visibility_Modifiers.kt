@@ -97,12 +97,19 @@ private fun ex2(){
 
 // Модификаторы конструкторов
 private fun ex3(){
+    open class Person constructor (val name: String){
+
+    }
+
+    val tom = Person("Tom")
+    println(tom.name)
 
 }
 
 fun main(){
     wrap("EXAMPLE 1"){ex1()}
     wrap("EXAMPLE 2"){ex2()}
+    wrap("EXMPLE 3 (MOD-CONST)"){ex3()}
 }
 
 
