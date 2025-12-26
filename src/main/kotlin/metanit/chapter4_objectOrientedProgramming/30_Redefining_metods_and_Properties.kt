@@ -1,6 +1,5 @@
 package edu.cesspool.metanit.chapter4_objectOrientedProgramming.ex2
-// НЕ ЗАКОНЧЕН!!!
-// ОШИБКА В ПОРЯДКЕ ИЗУЧЕНИЯ
+
 import edu.cesspool.metanit.chapter2_basics.wrap
 
 // Переопределение методов и свойств
@@ -116,4 +115,21 @@ fun ex3(){
     sem.display()
 
 
+}
+
+// Запрет переопределения
+fun ex4(){
+    open class Person(val name: String){
+        open fun display() = println("Name : $name")
+    }
+
+    open class Employee(name: String, val company: String) : Person(name){
+        // final - ЗАПРЕЩАЕТ дальнейшее переопределние у потомков
+        final override fun display() = println("Name : $name, company : $company")
+
+    }
+
+    class Manager(name: String, company: String): Employee(name, company){
+        //override fun display(){} // ERR
+    }
 }
