@@ -4,23 +4,21 @@ fun main(){
     example1()
     example2()
     example3()
-
     exampleAgrument()
 }
 
 
-
+/** Простой пример */
 fun example1(){
-    // ОБЪЯВЛЕНИЕ ФУНКЦИИ
     val funfun = fun(){
         println("FUN-FUN-FUN-FUN!")
     }
-    // ВЫЗОВ
+
     funfun()
 }
 
 
-
+/** В одну строку */
 fun example2(){
     val funfun = fun() = println("FFFFFFFUN!")
     funfun()
