@@ -82,7 +82,38 @@ fun exampleAuto(){
 //                                                               -
 // ---------------------------------------------------------------
 
+interface Animal {
+    // вложенный интерфейс для способности издавать звуки
+    interface Sound{
+        fun makeSound()
+    }
 
+    // Вложенный класс для описания
+    data class Info(
+        val name: String,
+        val age: Int,
+    )
+
+    val info: Info
+    val sound: Sound
+}
+
+class Dog(
+    override val info: Animal.Info,
+    override val sound: Animal.Sound
+) : Animal
+
+fun exampleAnimal() {
+    val sound = object : Animal.Sound {
+        override fun makeSound() = println("Гав-гав!")
+    }
+
+    val info = Animal.Info("Бобик", 3)
+    val dog = Dog(info, sound)
+
+    println("Собака: ${dog.info.name}, возраст: ${dog.info.age}")
+    dog.sound.makeSound()
+}
 
 
 
@@ -94,4 +125,6 @@ fun exampleAuto(){
 
 fun main(){
     exampleAuto()
+    println("---------")
+    exampleAnimal()
 }
