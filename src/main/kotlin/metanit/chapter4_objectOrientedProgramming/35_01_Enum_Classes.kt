@@ -1,4 +1,4 @@
-package edu.cesspool.metanit.chapter4_objectOrientedProgramming
+package edu.cesspool.metanit.chapter4_objectOrientedProgramming.less35_01
 
 /** Перечисления enum */
 
