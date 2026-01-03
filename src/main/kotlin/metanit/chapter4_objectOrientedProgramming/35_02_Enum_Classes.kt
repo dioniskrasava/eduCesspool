@@ -26,8 +26,8 @@ enum class DayTime{
 }
 
 fun examEnum(){
-    DayTime.DAY.printName()
-    DayTime.NIGHT.printName()
+    DayTime.DAY.printName()    // День
+    DayTime.NIGHT.printName()  // Ночь
 }
 
 fun main(){
