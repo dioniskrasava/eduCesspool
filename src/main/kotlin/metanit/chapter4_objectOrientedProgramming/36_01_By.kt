@@ -1,4 +1,4 @@
-package edu.cesspool.metanit.chapter4_objectOrientedProgramming
+package edu.cesspool.metanit.chapter4_objectOrientedProgramming.less36_01
 /** ДЕЛЕГИРОВАНИЕ */
 
 interface Seller {
