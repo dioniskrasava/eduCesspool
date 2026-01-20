@@ -40,3 +40,5 @@ fun main(){
     // phone2.makeVideoCall() // ERR! SmartPhone не знает про этот метод
     whatsapp.makeVideoCall()  // А так можно.
 }
+
+// i'll be back!!!1
