@@ -43,12 +43,14 @@ fun choosingAction(){
     val a = readLine()
 
     println("Вы выбрали $a")
-
+/*
     when (a) {
         1 -> addRecord(),
         2 ->
 
     }
+
+*/
 
 }
 
