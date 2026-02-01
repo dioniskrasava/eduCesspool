@@ -1,4 +1,4 @@
-package edu.cesspool.metanit.chapter4_objectOrientedProgramming
+package edu.cesspool.metanit.chapter4_objectOrientedProgramming.less37_01
 
 /**
  * Бывает что класс нужен лишь для того, чтобы описать один объект в программе
@@ -30,3 +30,10 @@ fun main(){
     println("Name = ${anotherPerson.name}. Age = ${anotherPerson.age}")
     anotherPerson.sayHello()
 }
+
+/**
+ *
+ * М
+ *
+ *
+ * */
