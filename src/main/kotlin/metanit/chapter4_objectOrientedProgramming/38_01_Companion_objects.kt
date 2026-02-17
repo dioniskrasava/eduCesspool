@@ -29,4 +29,8 @@ fun main(){
     Person("Вася")
     Person("Петя")
     Person("Маша")
+
+    Person.counter = 15       // МОЖНО ОБРАТИТЬСЯ К СВОЙСТВУ ОБЪЕКТА КОМПАНЬОНА и изменить его
+    println(Person.counter)
+
 }
