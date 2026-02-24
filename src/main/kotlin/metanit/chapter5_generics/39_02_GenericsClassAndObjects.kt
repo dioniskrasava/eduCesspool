@@ -7,12 +7,13 @@ package edu.cesspool.metanit.chapter5_generics.less39_02
  * Вместо того чтобы писать разные реализации для каждого типа, мы используем параметры типа.
  * */
 
+// Принято вроде как писать <T>, но на самом деле можно написать любое имя для переменного параметра
 
-class Box<T>(val value: T)
+class Box<Type>(val value: Type)
 
 fun main(){
-    val intBox    = Box(42)
-    val stringBox = Box("Привет")
+    val intBox    = Box(42)              // или    Box<Int>(42)
+    val stringBox = Box("Привет")        // или    Box<String>("Привет")
 
     println(intBox.value)
     println(stringBox.value)
