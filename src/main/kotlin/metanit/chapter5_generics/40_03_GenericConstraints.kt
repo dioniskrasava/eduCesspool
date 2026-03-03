@@ -7,7 +7,7 @@ package edu.cesspool.metanit.chapter5_generics.less40_03
 /**
  * Этот пример немного больше подходит, нежели вот такой:
  * ```
- * fun<T:Message> send(message: T){
+ * fun send(message: Message){
  *     println(message.text)
  * }
  * ```
@@ -28,7 +28,7 @@ package edu.cesspool.metanit.chapter5_generics.less40_03
  *
  *
  * */
-fun<T:Message> sendAndReturn(message: T) : T{
+fun <T:Message> sendAndReturn(message: T) : T{
     println(message.text)
     return message
 }
@@ -38,3 +38,12 @@ interface Message{
 }
 class EmailMessage(override val text: String): Message
 class SmsMessage(override val text: String): Message
+
+fun main(){
+    val email1 = EmailMessage("Hello (email)")
+    val sms1 = SmsMessage("Hello (sms)")
+
+   val returnEmail =  sendAndReturn(email1)
+   val returnSms =  sendAndReturn(sms1)
+
+}
