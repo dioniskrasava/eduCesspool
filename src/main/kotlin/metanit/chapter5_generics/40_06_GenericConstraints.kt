@@ -12,6 +12,14 @@ interface Message {
 class EmailMessage(override var text: String) : Message{
 }
 
+/**
+ * Мы декларируем что в данном классе будет использоваться некий параметр Т
+ *    и в итоге можем использовать его в любом месте класса:
+ *        - в конструкторе (первичном и вторичном)
+ *        - в свойствах (полях)
+ *        - в методах (типы параметров или возвращаемых значений)
+ *        - в инициализаторе (init)
+ * */
 class Messenger<T:Message>(){
     fun send(mes: T){
         println(mes.text)
@@ -20,10 +28,9 @@ class Messenger<T:Message>(){
 
 
 fun main(){
+
     val someMessage = EmailMessage("Hello (email)")
-
     val someMessenger = Messenger<EmailMessage>()
-
     someMessenger.send(someMessage)
 
 
