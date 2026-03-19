@@ -17,9 +17,7 @@ class Apple(name: String = "Яблоко") : Fruit(name)
 class Banana(name: String = "Банан") : Fruit(name)
 
 
-/** ИНВАРИАНТНОСТЬ
- *
- * (строгая коробка)*/
+/** ИНВАРИАНТНОСТЬ  (строгая коробка)*/
 class Box<T>(private var item: T){
     fun put(item: T){ this.item = item}
     fun get(): T = item
@@ -28,7 +26,7 @@ class Box<T>(private var item: T){
 
 fun main(){
     /**
-     * Инвариативность означает, что типы Box<Apple> and Box<Fruit> никак не связаны.
+     * Инвариативность означает, что типы `Box<Apple>` и `Box<Fruit>` никак не связаны.
      *          (даже если Apple подтип Fruit)
      *
      *          (это поведение по умолчанию)
