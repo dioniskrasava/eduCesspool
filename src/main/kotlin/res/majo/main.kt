@@ -1,6 +1,9 @@
 package edu.cesspool.res.majo
 
-/*
-* Добавить запись
-* Удалить запись
-* */
+fun main(){
+
+}
+
+fun show(){
+
+}

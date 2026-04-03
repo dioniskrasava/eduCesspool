@@ -1,5 +1,8 @@
 package edu.cesspool.metanit.chapter5_generics.less41_03
 
+// ИНВАРИАНТНОСТЬ, КОВАРИАНТНОСТЬ, КОНТРАВАРИАНТНОСТЬ
+//                  в одном месте
+
 // --- Общая иерархия классов ---
 open class Fruit(val name: String)
 class Apple(name: String = "Яблоко"): Fruit(name)
@@ -42,7 +45,6 @@ interface Producer<out T> {
     fun produce(): T
 }
 
-
 class AppleOrchard : Producer<Apple>{
     override fun produce(): Apple = Apple()
 }
@@ -51,6 +53,28 @@ class BananaPlantation: Producer<Banana>{
     override fun produce(): Banana = Banana()
 }
 
+fun exampleKovariance(){
+    println("\n=== КОВАРИАНТНОСТЬ (Producer) ===")
+    val appleProducer: Producer<Apple> = AppleOrchard()
+    val bananaProducer: Producer<Banana> = BananaPlantation()
+
+    // 4. Ковариантность: Producer<Apple> можно присвоить Producer<Fruit>
+    val fruitProducer1: Producer<Fruit> = appleProducer
+    val fruitProducer2: Producer<Fruit> = bananaProducer
+
+    // 5. Функция, ожидающая Producer<Fruit>, принимает Producer<Apple>
+    fun harvest(producer: Producer<Fruit>){
+        val fruit = producer.produce()
+        println("Урожай : ${fruit.name}")
+    }
+
+    harvest(appleProducer)
+    harvest(bananaProducer)
+
+
+    // 6. Но нельзя использовать Producer<Fruit> там, где нужен Producer<Apple>
+    //val appleProducerAgain: Producer<Apple> = fruitProducer1 // ОШИБКА (хотя fruitProducer1 ссылается на AppleOrchard, тип переменной - Producer<Fruit>)
+}
 
 // ===== 3. КОНТРАВАРИАНТНОСТЬ (in) =====
 // Интерфейс-потребитель: только принимает Т (in).
@@ -72,70 +96,39 @@ class AppleEater : Consumer<Apple>{
     }
 }
 
-
-
-// ===== Демонстрация всех трёх видов в одном месте =====
-fun main(){
-    exampleInvariance()
-
-
-    println("\n=== КОВАРИАНТНОСТЬ (Producer) ===")
-    val appleProducer: Producer<Apple> = AppleOrchard()
-    val bananaProducer: Producer<Banana> = BananaPlantation()
-
-    // 4. Ковариантность: Producer<Apple> можно присвоить Producer<Fruit>
-    val fruitProducer1: Producer<Fruit> = appleProducer
-    val fruitProducer2: Producer<Fruit> = bananaProducer
-
-
-    // ДАЛЕЕ УДАЛИ И РУЧКАМИ ПОЧЕКАЙ:
-    //
-    // ВСТАВЛЯЮ ЧТОБЫ НЕ ПОТЕРЯТЬ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! уууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууууудоли
-
-
-    // 5. Функция, ожидающая Producer<Fruit>, принимает Producer<Apple>
-    fun harvest(producer: Producer<Fruit>) {
-        val fruit = producer.produce()
-        println("Собрали: ${fruit.name}")
-    }
-    harvest(appleProducer)   // OK
-    harvest(bananaProducer)  // OK
-
-    // 6. Но нельзя использовать Producer<Fruit> там, где нужен Producer<Apple>
-    // val appleProducerAgain: Producer<Apple> = fruitProducer1 // ОШИБКА (хотя fruitProducer1 ссылается на AppleOrchard, тип переменной - Producer<Fruit>)
-
+fun exampleKontravariance(){
     println("\n=== КОНТРАВАРИАНТНОСТЬ (Consumer) ===")
     val fruitEater: Consumer<Fruit> = FruitEater()
     val appleEater: Consumer<Apple> = AppleEater()
 
     // 7. Контравариантность: Consumer<Fruit> можно присвоить Consumer<Apple>
-    val consumerForApple: Consumer<Apple> = fruitEater  // OK
+    val consumerForApple: Consumer<Apple> = fruitEater
 
-    // 8. Функция, ожидающая Consumer<Apple>, принимает Consumer<Fruit>
-    fun feedApple(eater: Consumer<Apple>, apple: Apple) {
+    //8. Функция, ожидающая Consumer<Aplle>, принимает Consumer<Fruit>
+    fun feedApple(eater: Consumer<Apple>, apple: Apple){
         eater.consume(apple)
     }
-    feedApple(fruitEater, Apple())   // OK (fruitEater - Consumer<Fruit>)
-    feedApple(appleEater, Apple())   // OK
+
+    feedApple(fruitEater, Apple())
+    feedApple(appleEater, Apple())
 
     // 9. Но нельзя использовать Consumer<Apple> там, где нужен Consumer<Fruit>
-    // val fruitEaterAgain: Consumer<Fruit> = appleEater // ОШИБКА
+    //val fruitEaterAgain: Consumer<Fruit> = appleEater // err
+}
 
+fun exampleForStandartsLibsKotlin(){
     println("\n=== Примеры из стандартной библиотеки Kotlin ===")
     // Инвариантность: MutableList
     val mutableAppleList: MutableList<Apple> = mutableListOf(Apple(), Apple())
-    // val mutableFruitList: MutableList<Fruit> = mutableAppleList // ОШИБКА (инвариантность)
+    val mutableFruitList: MutableList<Fruit> = mutableAppleList // err! (инвариантность)
+}
 
-    // Ковариантность: List (read-only)
-    val appleList: List<Apple> = listOf(Apple(), Apple())
-    val fruitList: List<Fruit> = appleList // OK (ковариантность)
 
-    // Контравариантность: Comparator
-    val fruitComparator: Comparator<Fruit> = compareBy { it.name }
-    val appleComparator: Comparator<Apple> = fruitComparator // OK (контравариантность)
-    val apples = listOf(Apple("Гренни Смит"), Apple("Фуджи"))
-    println("Отсортированные яблоки: ${apples.sortedWith(fruitComparator).map { it.name }}")
-
+fun main(){
+    exampleInvariance()
+    exampleKovariance()
+    exampleKontravariance()
+    exampleForStandartsLibsKotlin()
 }
 
 
