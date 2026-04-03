@@ -75,7 +75,7 @@ fun exampleKovariance(){
     // 6. Но нельзя использовать Producer<Fruit> там, где нужен Producer<Apple>
     //val appleProducerAgain: Producer<Apple> = fruitProducer1 // ОШИБКА (хотя fruitProducer1 ссылается на AppleOrchard, тип переменной - Producer<Fruit>)
 }
-
+//---------------------------------------------------------------------------------
 // ===== 3. КОНТРАВАРИАНТНОСТЬ (in) =====
 // Интерфейс-потребитель: только принимает Т (in).
 // Consumer<Fruit> можно использовать как Consumer<Apple>
@@ -120,7 +120,14 @@ fun exampleForStandartsLibsKotlin(){
     println("\n=== Примеры из стандартной библиотеки Kotlin ===")
     // Инвариантность: MutableList
     val mutableAppleList: MutableList<Apple> = mutableListOf(Apple(), Apple())
-    val mutableFruitList: MutableList<Fruit> = mutableAppleList // err! (инвариантность)
+    //val mutableFruitList: MutableList<Fruit> = mutableAppleList // err! (инвариантность)
+
+    // Ковариантность: List (read-only)
+    val appleList: List<Apple> = listOf(Apple(), Apple())
+    val fruitList: List<Fruit> = appleList // OK (ковариантность)
+
+    // Контравариантность (оставим на закуску)...
+
 }
 
 
