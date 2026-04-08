@@ -71,9 +71,52 @@ fun example4(){
     * */
 }
 
+// оператор throw
+fun exampleThrow(){
+    fun checkAge(age: Int): Int{
+        if (age < 0 || age > 110) throw Exception("Неправильное значение age = $age. Должно быть в промежутке от 0 до 110")
+        println("Age $age is valid")
+        return age
+    }
+
+    checkAge(5)
+    checkAge(25)
+    checkAge(-5)  // exc
+    checkAge(125) // exc
+    println("До сюда exampleThrow2() не достанет =)")
+}
+
+// отработка исключений (чтобы программа не падала, а продолжала работать дальше)
+fun exampleThrow2(){
+    try {
+        exampleThrow()
+    } catch (e: Exception) {
+        println("ОШИБОЧКА. ${e.message}")
+    }
+}
+
+// try может возвращать значения
+fun returnTry(){
+    fun checkAge(age: Int): Int{
+        if (age < 0) throw Exception("Отрицательный возраст???")
+        if (age > 150) throw Exception("Видимо уже песок в трусах?")
+        println("Возраст нормальный!")
+        return age
+    }
+
+    val checkedAge1 = try {checkAge(15)} catch (e: Exception) {null}
+    val checkedAge2 = try {checkAge(-5)} catch (e: Exception) {println(e.message); null}
+
+    println("check 1 val = $checkedAge1")
+    println("check 2 val = $checkedAge2")
+}
+
 fun main(){
     //exampleOne()
     //example2()
     //example3()
-    example4()
+    //example4()
+    //exampleThrow()
+    //exampleThrow2() // не отработается значение 125 (потому что поймается первое исключение и завершится выполнение
+    returnTry()
 }
