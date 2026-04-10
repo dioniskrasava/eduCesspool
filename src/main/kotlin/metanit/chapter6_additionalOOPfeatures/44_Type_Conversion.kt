@@ -73,6 +73,11 @@ open class Person(val name: String)
 open class Employee(name: String, val company: String) : Person(name)
 class Manager(name: String, company: String) : Employee(name, company)
 
+
+// ограничение умных преобразований
+
+
+
 fun main(){
     //ex1()
     //ex2()
