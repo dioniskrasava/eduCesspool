@@ -1,4 +1,4 @@
-package edu.cesspool.metanit.chapter6_additionalOOPfeatures.less44_01
+package edu.cesspool.metanit.chapter6_additionalOOPfeatures.less44_02
 
 
 // Преобразование типов
