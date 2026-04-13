@@ -3,6 +3,7 @@ package edu.cesspool.metanit.chapter6_additionalOOPfeatures.less46_03
 // Extension function with receiver
 // Функции расширения с получателем
 
+// ПРИМЕР Kotlin DSL (Domain Specific Language) — это предметно-ориентированный язык.
 
 class Person {
     var name = ""
