@@ -1,15 +1,18 @@
 package edu.cesspool.metanit.chapter7_collectionsAndSequences
 
 /*
-* List - последновательный список элементов. Неизменяем (immutable).
+* List - последовательный список элементов. Неизменяем (immutable).
 * */
+
 
 fun main(){
     //ex1()
     //ex2()
-    ex3()
+    //ex3()
+    ex4()
 }
 
+//-------------------------------НЕИЗМЕНЯЕМЫЕ СПИСКИ
 fun ex1(){
     val numbers = listOf(1,2,3,4)
     val names = listOf("Tom", "Bob", "Sam")
@@ -65,5 +68,26 @@ fun ex3(){
     val people = listOf("Tom", "Sam", "Kate", "Bob", "Alice", "Mike")
     val subPeople = people.subList(1, 4)
     println(subPeople) // [Sam, Kate, Bob]
+
+}
+
+//-------------------------------ИЗМЕНЯЕМЫЕ СПИСКИ
+fun ex4(){
+    var numbers1 : ArrayList<Int> = arrayListOf(1,2,3,4,5)
+    numbers1.add(99)   // добавляем элемент в конец
+    println(numbers1)
+
+    numbers1.clear()  // очистка массива
+    println(numbers1)
+
+    println(numbers1.size) // 0  (размер массива)
+
+    println("===========================")
+
+
+    var numbers2 : MutableList<Int> = mutableListOf(5,6,7,8)
+    println(numbers2)
+    numbers2.add(0, 23); println(numbers2) // добавляем в позцию 0 элемент 23
+    numbers2.addAll(0, listOf(-3, -2, -1))
 
 }
