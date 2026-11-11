@@ -1,12 +1,13 @@
 package edu.cesspool.micro_apps.nutritional_app
 
+import edu.cesspool.micro_apps.nutritional_app.Product
+
 fun main(){
 
-    // хранит список продуктов в качестве переменной
-    //val listProduct =
+    val products = mutableListOf<Product>()
 
     welcome()
-    selectAction()
+    selectAction(products)
 }
 
 /**
@@ -24,18 +25,12 @@ fun welcome(){
 }
 
 
-data class Product(
-    var name: String,              // название
-    var proteins: Float,           // белки
-    var fats: Float,               // жиры
-    var carbohydrates: Float,      // углеводы
-    var calorific: Float           // калории
-)
+
 
 /**
  *  Ручной ввод продукта
  */
-fun readProductManually(): Product{
+fun readProductManually(): Product {
     println("ЗАБИВАЕМ НОВЫЙ ПРОДУКТ В БАЗУ")
 
     print("Название продукта : ")
@@ -55,14 +50,18 @@ fun readProductManually(): Product{
 /**
  * Выводит список продуктов
  * */
-fun showAllProducts(){
-
+fun showAllProducts(products: MutableList<Product>){
+    // добавить шапку через  println() с заголовками
+    for (i in products) {
+        print("Name - ${i.name} | ${i.proteins}| ${i.fats}| ${i.carbohydrates} | ${i.calorific}")
+    }
 }
 
 /**
  * Безопасный ввод дробного числа
  */
 fun readFloatSafely(): Float{
+    // В будущем рассмотреть вопрос о проверке на отрицательность. Наверное не бывает отрицательной калорийности.
     while (true){
         val number = readln().toFloatOrNull()
         if (number != null) return number
@@ -70,7 +69,9 @@ fun readFloatSafely(): Float{
     }
 }
 
-fun selectAction(){
+
+fun selectAction(products: MutableList<Product>){
+
 
     var command: Int?
 
@@ -82,11 +83,14 @@ fun selectAction(){
     }
 
 
-
+while (true){
     when (command){
-        1 -> readProductManually()
-        2 -> showAllProducts()
+        1 -> products.add(readProductManually())
+        2 -> showAllProducts(products)
+        0 -> return
         else -> println("Неизвестная команда")
     }
+}
+
 
 }
